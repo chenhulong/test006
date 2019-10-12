@@ -1,0 +1,1681 @@
+https://blog.csdn.net/lulupuk/article/details/53184521
+https://blog.csdn.net/ylyg050518/article/details/80480966
+https://blog.csdn.net/xb12369/article/details/40788491
+
+https://www.cnblogs.com/tanlon/p/4279148.html
+https://www.cnblogs.com/tanlon/p/4279157.html
+https://www.cnblogs.com/tanlon/p/4279167.html
+https://www.cnblogs.com/orange921/p/5453342.html
+https://blog.csdn.net/xiaoliouc/article/details/8178107
+https://www.cnblogs.com/palance/p/5187103.html
+https://blog.csdn.net/lx82319214/article/details/84188137
+
+https://blog.csdn.net/wh_19910525/article/details/7392199
+
+https://www.cnblogs.com/mimi1/archive/2012/10/09/2716417.html
+https://blog.csdn.net/rookie_wei/article/details/83310211
+https://blog.csdn.net/jianglei1310446/article/details/77572435
+https://blog.csdn.net/ProgramOfApe/article/details/78288622
+https://www.cnblogs.com/tanlon/p/4279157.html
+https://blog.csdn.net/weixin_33725270/article/details/86126009
+https://blog.csdn.net/xubin341719/article/details/40378205
+https://blog.csdn.net/javon_hzw/article/details/48731281
+
+export PATH=$PATH:$(pwd)/out/host/linux-x86/bin
+export ANDROID_PRODUCT_OUT=$(pwd)/out/target/product/generic
+
+
+emulator -kernel ./prebuilt/android-arm/kernel/kernel-qemu-armv7 -sysdir ./out/target/product/generic/ -system $ANDROID_PRODUCT_OUT/system.img -data $ANDROID_PRODUCT_OUT/userdata.img -ramdisk $ANDROID_PRODUCT_OUT/ramdisk.img
+ 
+emulator -kernel ./prebuilt/android-arm/kernel/zImage -sysdir ./out/target/product/generic/ -system $ANDROID_PRODUCT_OUT/system.img -data $ANDROID_PRODUCT_OUT/userdata.img -ramdisk $ANDROID_PRODUCT_OUT/ramdisk.img
+ 
+adb shell
+cd proc/
+cat version
+Linux version 3.4.67-gea97df6 (USER@MACHINE) (gcc version 4.6.x-google 20120106 (prerelease) (GCC) ) #2 PREEMPT Sat Feb 7 17:48:18 CST 2015
+
+device/hisilicon/Hi3798MV300/BoardConfig.mk:255:BOARD_BLUETOOTH_WIFI_DEVICE_RTL8822BU := n
+device/hisilicon/Hi3798MV300/BoardConfig.mk:347:ifeq ($(BOARD_BLUETOOTH_WIFI_DEVICE_RTL8822BU),y)
+device/hisilicon/Hi3798MV200H/BoardConfig.mk:218:BOARD_BLUETOOTH_WIFI_DEVICE_RTL8822BU := n
+device/hisilicon/Hi3798MV200H/BoardConfig.mk:310:ifeq ($(BOARD_BLUETOOTH_WIFI_DEVICE_RTL8822BU),y)
+device/hisilicon/Hi3796MV200/BoardConfig.mk:202:BOARD_BLUETOOTH_WIFI_DEVICE_RTL8822BU := y
+device/hisilicon/Hi3796MV200/BoardConfig.mk:225:ifeq ($(BOARD_BLUETOOTH_WIFI_DEVICE_RTL8822BU),y)
+device/hisilicon/Hi3798MV310/BoardConfig.mk:218:BOARD_BLUETOOTH_WIFI_DEVICE_RTL8822BU := n
+device/hisilicon/Hi3798MV310/BoardConfig.mk:306:ifeq ($(BOARD_BLUETOOTH_WIFI_DEVICE_RTL8822BU),y)
+device/hisilicon/Hi3798MV200/BoardConfig.mk:214:BOARD_BLUETOOTH_WIFI_DEVICE_RTL8822BU := n
+device/hisilicon/Hi3798MV200/BoardConfig.mk:302:ifeq ($(BOARD_BLUETOOTH_WIFI_DEVICE_RTL8822BU),y)
+device/hisilicon/bigfish/build/kernel.mk:44:    CFG_HI_WIFI_DEVICE_RTL8822BU=$(BOARD_BLUETOOTH_WIFI_DEVICE_RTL8822BU) \
+device/hisilicon/bigfish/sdk/source/component/wifi/drv/readme_for_pcie_wifi.txt:8:BOARD_BLUETOOTH_WIFI_DEVICE_RTL8822BU := n
+
+CFG_HI_WIFI_DEVICE_RTL8822BU
+
+CFG_HI_BLUETOOTH_DEVICE_RTL8822BU
+BOARD_BLUETOOTH_DEVICE_REALTEK
+    1、WIFI Settings应用程序：
+       packages/apps/Settings/src/com/android/settings/wifi/
+    2、JAVA部分（framework）：
+         frameworks/base/services/java/com/android/server/
+         frameworks/base/wifi/java/android/net/wifi/
+    3、JNI部分：
+         frameworks/base/core/jni/android_net_wifi_Wifi.cpp
+    4、wpa_supplicant的适配器 部分
+         hardware/libhardware_legary/wifi/主要是wifi.c。
+    5、wifi用户空间的程序和库:
+         external/wpa_supplicant/ 和 external/wap_supplicant_6/ 我不清楚是哪一个目录生成库libwpaclient.so和 守护进程wpa_supplicant。
+    6、kernel 驱动
+	
+	
+Internal error: : 8 [#13] SMP ARM
+Modules linked in:
+   Move systab and strtab from 0x08526388 to 0x0B1468E8, 0x0007C004 Bytes
+   Move head from 0x08220000 to 0x0AC00000, 0x00000800 Bytes
+   Move TAs from 0x085A238C to 0x0AC00800, 0x001C455C Bytes
+## Succeed to load SecureOS
+BL32 entry: 0x09808000
+Start Warm Reseting
+INFO:    BL31 Early setup
+INFO:    BL31 checksum successfully
+NOTICE:  BL31: v1.2(debug):3b3d407
+NOTICE:  BL31: Built : 00:11:55, Mar 12 2019
+INFO:    BL31: Initializing runtime services
+INFO:    Register runtime service: std_svc 
+INFO:    Register runtime service: tspd_std 
+INFO:    Register runtime service: tspd_fast 
+INFO:    ==========1==============0x8020000 0x821ffff 
+INFO:    BL31: Initializing BL32
+INFO:    Entering secure OS
+TrustedCore Release Version MediaOS V100R003C00SPC002B218 base iCOS_MAIN_3.3.0_MHA_1.10, Apr  9 2019.18:49:44
+Hisilicon TrustedCore v3.3.0.2
+[TEEGlobalTask]1/1/1970 0:0:0.492 TrustedCore Execute Successfully and jump to Linux  kernel
+INFO:    BL31: Preparing for EL3 exit to normal world
+INFO:    Entry point address = 0x2000000
+INFO:    SPSR = 0x1d3
+
+INFO:    std_svc_smc_handler
+INFO:    psci_smc_handler smc_fid:84000000
+INFO:    psci_smc_handler smc_fid:84000000
+INFO:    std_svc_smc_handler
+INFO:    psci_smc_handler smc_fid:84000006
+INFO:    psci_smc_handler smc_fid:84000006
+INFO:    std_svc_smc_handler
+INFO:    psci_smc_handler smc_fid:8400000a
+INFO:    psci_smc_handler smc_fid:8400000a
+INFO:    std_svc_smc_handler
+INFO:    psci_smc_handler smc_fid:8400000a
+INFO:    psci_smc_handler smc_fid:8400000a
+INFO:    std_svc_smc_handler
+INFO:    psci_smc_handler smc_fid:84000003
+INFO:    psci_smc_handler smc_fid:84000003
+INFO:    CPU mpidr 1 : entry point is 9520
+INFO:    CPU 1 : entry point is 9520
+INFO:    CPU 1 PSCI Power up...INFO:    std_svc_smc_handler
+INFO:    psci_smc_handler smc_fid:84000003
+INFO:    psci_smc_handler smc_fid:84000003
+INFO:    CPU mpidr 2 : entry point is 9520
+INFO:    CPU 2 : entry point is 9520
+INFO:    CPU 2 PSCI Power up...INFO:    std_svc_smc_handler
+INFO:    psci_smc_handler smc_fid:84000003
+INFO:    psci_smc_handler smc_fid:84000003
+INFO:    CPU mpidr 3 : entry point is 9520
+INFO:    CPU 3 : entry point is 9520
+INFO:    CPU 3 PSCI Power up...Booting Linux on physical CPU 0x0
+Linux version 4.4.35_hi3798mv310 (chenhl@chenhl-VirtualBox) (gcc version 4.9.4 (gcc-linaro-4.9-2017.01 + glibc-2.27 Build by czyong Thu Mar 29 22:12:18 CST 2018) ) #2 SMP Wed Jun 12 12:30:05 CST 2019
+CPU: ARMv7 Processor [410fd034] revision 4 (ARMv7), cr=10c0383d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+initmrd: found no initmrd.
+Machine model: Hisilicon
+cma: Reserved 48 MiB at 0x7c800000
+cma: Reserved 4 MiB at 0x7fc00000
+Memory policy: Data cache writealloc
+psci: probing for conduit method from DT.
+psci: PSCIv1.0 detected in firmware.
+psci: Using standard PSCI v0.2 function IDs
+psci: Trusted OS migration not required
+PERCPU: Embedded 13 pages/cpu @df3b1000 s22336 r8192 d22720 u53248
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 523256
+Kernel command line: console=ttyAMA0,115200 root=/dev/mmcblk0p23 rootfstype=ext4 rootwait blkdevparts=mmcblk0:4M(boot),4M(bootargs),30M(recovery),2M(stbinfo),2M(deviceinfo),2M(systeminfo),2M(softwareinfo),4M(loaderdb),4M(loaderdbbak),32M(loader),32M(loaderbak),8M(baseparam),8M(pqparam),20M(logo),20M(logobak),40M(fastplay),40M(fastplaybak),40M(kernel),20M(misc),40M(trustedcore),100M(factorytest),800M(system),500M(cache),50M(private),8M(securestore),-(others)  mem=2G mmz=ddr,0,0,48M vmalloc=500M
+log_buf_len individual max cpu contribution: 4096 bytes
+log_buf_len total cpu_extra contributions: 12288 bytes
+log_buf_len min size: 16384 bytes
+log_buf_len: 32768 bytes
+early log buf free: 13892(84%)
+PID hash table entries: 2048 (order: 1, 8192 bytes)
+Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+Memory: 1915604K/2097152K available (7272K kernel code, 542K rwdata, 2008K rodata, 16624K init, 529K bss, 128300K reserved, 53248K cma-reserved, 1515000K highmem)
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+    vmalloc : 0xe0800000 - 0xff800000   ( 496 MB)
+    lowmem  : 0xc0000000 - 0xe0400000   ( 516 MB)
+    pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+    modules : 0xbe000000 - 0xbfe00000   (  30 MB)
+      .text : 0xc0008000 - 0xc07225e4   (7274 kB)
+      .init : 0xc09ac000 - 0xc19e8000   (16624 kB)
+      .data : 0xc19e8000 - 0xc1a6f8dc   ( 543 kB)
+       .bss : 0xc1a71000 - 0xc1af577c   ( 530 kB)
+SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+Hierarchical RCU implementation.
+        Build-time adjustment of leaf fanout to 32.
+NR_IRQS:352
+clocksource: hisp804: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+Console: colour dummy device 80x30
+Calibrating delay loop... 2383.87 BogoMIPS (lpj=1191936)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+CPU: Testing write buffer coherency: ok
+ftrace: allocating 25361 entries in 75 pages
+CPU0: update cpu_capacity 1024
+CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+Setting up static identity map for 0x8280 - 0x82d8
+CPU: hi3798mv200h
+CPU1: update cpu_capacity 1024
+CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+CPU2: update cpu_capacity 1024
+CPU2: thread -1, cpu 2, socket 0, mpidr 80000002
+CPU3: update cpu_capacity 1024
+CPU3: thread -1, cpu 3, socket 0, mpidr 80000003
+Brought up 4 CPUs
+SMP: Total of 4 processors activated (9572.35 BogoMIPS).
+CPU: All CPU(s) started in SVC mode.
+CPU3: update max cpu_capacity 1024
+VFP support v0.3: implementor 41 architecture 3 part 40 variant 3 rev 4
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+NET: Registered protocol family 16
+CPU1: update max cpu_capacity 1024
+DMA: preallocated 256 KiB pool for atomic coherent allocations
+hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+hw-breakpoint: maximum watchpoint size is 8 bytes.
+Serial: AMBA PL011 UART driver
+f8b00000.uart: ttyAMA0 at MMIO 0xf8b00000 (irq = 25, base_baud = 0) is a PL011 rev2
+console [ttyAMA0] enabled
+f8b02000.uart: ttyAMA1 at MMIO 0xf8b02000 (irq = 26, base_baud = 0) is a PL011 rev2
+f8b03000.uart: ttyAMA2 at MMIO 0xf8b03000 (irq = 27, base_baud = 0) is a PL011 rev2
+pl061_gpio f8b20000.gpio0: PL061 GPIO chip @0xf8b20000 registered
+pl061_gpio f8b21000.gpio1: PL061 GPIO chip @0xf8b21000 registered
+pl061_gpio f8b22000.gpio2: PL061 GPIO chip @0xf8b22000 registered
+pl061_gpio f8b23000.gpio3: PL061 GPIO chip @0xf8b23000 registered
+pl061_gpio f8b24000.gpio4: PL061 GPIO chip @0xf8b24000 registered
+pl061_gpio f8004000.gpio5: PL061 GPIO chip @0xf8004000 registered
+pl061_gpio f8b26000.gpio6: PL061 GPIO chip @0xf8b26000 registered
+pl061_gpio f8b27000.gpio7: PL061 GPIO chip @0xf8b27000 registered
+pl061_gpio f8b28000.gpio8: PL061 GPIO chip @0xf8b28000 registered
+pl061_gpio f8b29000.gpio9: PL061 GPIO chip @0xf8b29000 registered
+tee_agent_kernel_init: agent id 1253990808 has no init function
+hisi_iommu_ptable_addr:phy 0x1dc00000    size:0x400000
+hisi_iommu_err_rdaddr :phy 0x1e48ca00    size:0x200
+hisi_iommu_err_wraddr :phy 0x1e48cc00     size:0x200
+in hisi_iommu_domain_init start 
+in hisi_iommu_domain_init end 
+vgaarb: loaded
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+media: Linux media interface: v0.10
+Linux video capture interface: v2.00
+Advanced Linux Sound Architecture Driver Initialized.
+Bluetooth: Core ver 2.21
+NET: Registered protocol family 31
+Bluetooth: HCI device and connection manager initialized
+Bluetooth: HCI socket layer initialized
+Bluetooth: L2CAP socket layer initialized
+Bluetooth: SCO socket layer initialized
+clocksource: Switched to clocksource hisp804
+NET: Registered protocol family 2
+TCP established hash table entries: 4096 (order: 2, 16384 bytes)
+TCP bind hash table entries: 4096 (order: 3, 32768 bytes)
+TCP: Hash tables configured (established 4096 bind 4096)
+UDP hash table entries: 256 (order: 1, 8192 bytes)
+UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+NET: Registered protocol family 1
+RPC: Registered named UNIX socket transport module.
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+NetWinder Floating Point Emulator V0.97 (double precision)
+hw perfevents: enabled with armv7_cortex_a17 PMU driver, 7 counters available
+futex hash table entries: 1024 (order: 4, 65536 bytes)
+VFS: Disk quotas dquot_6.6.0
+VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+squashfs: version 4.0 (2009/01/31) Phillip Lougher
+jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+fuse init (API version 7.23)
+bounce: pool size: 64 pages
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 250)
+io scheduler noop registered
+io scheduler deadline registered (default)
+io scheduler cfq registered
+Sec mmz start to init
+Sec mmz initialized.
+brd: module loaded
+loop: module loaded
+hifmc100: registerd new interface driver hifmc100.
+hifmc100: Found flash memory controller hifmc100.
+hifmc100: no found spi-nor device.
+hifmc100: no found nand device.
+hifmc100: no found spi-nand device.
+FEPHY:addr=2, la_am=0xe, ldo_am=0x3, r_tuning=0x15
+libphy: himii: probed
+hi_eth: attached port 0 PHY 2 to driver HiSilicon Festa s28v113
+libphy: himii: probed
+hi_eth: connect to port[0] PHY failed!
+hi_eth: no dev probed!
+PPP generic driver version 2.4.2
+PPP BSD Compression module registered
+PPP Deflate Compression module registered
+usbcore: registered new interface driver asix
+usbcore: registered new interface driver ax88179_178a
+usbcore: registered new interface driver cdc_ether
+usbcore: registered new interface driver dm9601
+usbcore: registered new interface driver net1080
+usbcore: registered new interface driver cdc_subset
+usbcore: registered new interface driver zaurus
+usbcore: registered new interface driver cdc_ncm
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ehci-pci: EHCI PCI platform driver
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+ohci-pci: OHCI PCI platform driver
+usbcore: registered new interface driver usb-storage
+usbcore: registered new interface driver usbserial
+usbcore: registered new interface driver usbserial_generic
+usbserial: USB Serial support registered for generic
+usbcore: registered new interface driver usb_debug
+usbserial: USB Serial support registered for debug
+usbcore: registered new interface driver option
+usbserial: USB Serial support registered for GSM modem (1-port)
+usbcore: registered new interface driver pl2303
+usbserial: USB Serial support registered for pl2303
+mousedev: PS/2 mouse device common for all mice
+usbcore: registered new interface driver xpad
+i2c /dev entries driver
+usbcore: registered new interface driver uvcvideo
+USB Video Class driver (1.1.1)
+sp805-wdt f8a2c000.watchdog: registration successful
+registered new interface driver himciV3.0_4.4.35_hi3798mv310_20170401
+mmc0: MAN_BKOPS_EN bit is not set
+scan edges:2 p2f:6 f2p:8
+mix set temp-phase 3
+scan elemnts: startp:123 endp:112
+Tuning SampleClock. mix set phase:[03/07] ele:[05/16] 
+mmc0: new HS400 MMC card at address 0001
+mmcblk0: mmc0:0001 008G30 7.28 GiB 
+mmcblk0boot0: mmc0:0001 008G30 partition 1 4.00 MiB
+mmcblk0boot1: mmc0:0001 008G30 partition 2 4.00 MiB
+mmcblk0rpmb: mmc0:0001 008G30 partition 3 4.00 MiB
+ mmcblk0: p1(boot) p2(bootargs) p3(recovery) p4(stbinfo) p5(deviceinfo) p6(systeminfo) p7(softwareinfo) p8(loaderdb) p9(loaderdbbak) p10(loader) p11(loaderbak) p12(baseparam) p13(pqparam) p14(logo) p15(logobak) p16(fastplay) p17(fastplaybak) p18(kernel) p19(misc) p20(trustedcore) p21(factorytest) p22(system) p23(cache) p24(private) p25(securestore) p26(others)
+f9820000.himciv200.SD: eMMC/MMC/SD Device NOT detected!
+f9c40000.himciv200.SD: eMMC/MMC/SD Device NOT detected!
+hidraw: raw HID events driver (C) Jiri Kosina
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+ashmem: initialized
+usbcore: registered new interface driver snd-usb-audio
+oprofile: using timer interrupt.
+Netfilter messages via NETLINK v0.30.
+nfnl_acct: registering with nfnetlink.
+ip_tables: (C) 2000-2006 Netfilter Core Team
+arp_tables: (C) 2002 David S. Miller
+NET: Registered protocol family 10
+NET: Registered protocol family 17
+Bluetooth: RFCOMM TTY layer initialized
+Bluetooth: RFCOMM socket layer initialized
+Bluetooth: RFCOMM ver 1.11
+Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+Bluetooth: BNEP filters: protocol multicast
+Bluetooth: BNEP socket layer initialized
+Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+Bluetooth: HIDP socket layer initialized
+Registering SWP/SWPB emulation handler
+ALSA device list:
+  No soundcards found.
+Warning: unable to open an initial console.
+Freeing unused kernel memory: 16624K (c09ac000 - c19e8000)
+This architecture does not have kernel memory protection.
+hi_media: section 2 reloc 0 sym '__gnu_mcount_nc': relocation 28 out of range (0xbe000010 -> 0xc001f708)
+hi_media: section 2 reloc 0 sym '__gnu_mcount_nc': relocation 28 out of range (0xbe007010 -> 0xc001f708)
+hi_mmz: Unknown symbol HI_DRV_PM_UnRegister (err 0)
+hi_mmz: Unknown symbol HI_DRV_PM_Register (err 0)
+hi_mmz: Unknown symbol HI_DRV_PM_UnRegister (err 0)
+hi_mmz: Unknown symbol HI_DRV_PM_Register (err 0)
+hi_common: Unknown symbol HI_DRV_PM_UnRegister (err 0)
+hi_common: Unknown symbol HI_DRV_PM_Register (err 0)
+hi_common: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_common: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_common: Unknown symbol HI_DRV_PM_UnRegister (err 0)
+hi_common: Unknown symbol HI_DRV_PM_Register (err 0)
+hi_common: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_common: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_pdm: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_pdm: Unknown symbol HI_LogOut (err 0)
+hi_pdm: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_pdm: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_pdm: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_pdm: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_pdm: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_pdm: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_pdm: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_pdm: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_pdm: Unknown symbol HI_LogOut (err 0)
+hi_pdm: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_pdm: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_pdm: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_pdm: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_pdm: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_pdm: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_pdm: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_pq: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_pq: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_pq: Unknown symbol HI_LogOut (err 0)
+hi_pq: Unknown symbol HI_OSAL_Vsnprintf (err 0)
+hi_pq: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_pq: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_pq: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_pq: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_pq: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_pq: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_pq: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_pq: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_pq: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_pq: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_pq: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_pq: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_pq: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_pq: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_pq: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_pq: Unknown symbol HI_LogOut (err 0)
+hi_pq: Unknown symbol HI_OSAL_Vsnprintf (err 0)
+hi_pq: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_pq: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_pq: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_pq: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_pq: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_pq: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_pq: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_pq: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_pq: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_pq: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_pq: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_pq: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_pq: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_cipher: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_cipher: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_cipher: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_cipher: Unknown symbol HI_DRV_MMZ_Map (err 0)
+hi_cipher: Unknown symbol HI_DRV_MMZ_Release (err 0)
+hi_cipher: Unknown symbol HI_DRV_MMZ_MapToSmmu (err 0)
+hi_cipher: Unknown symbol osal_request_irq (err 0)
+hi_cipher: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_cipher: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_cipher: Unknown symbol HI_DRV_MMZ_UnmapFromSmmu (err 0)
+hi_cipher: Unknown symbol HI_LogOut (err 0)
+hi_cipher: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_cipher: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_cipher: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_cipher: Unknown symbol HI_DRV_MMZ_Unmap (err 0)
+hi_cipher: Unknown symbol HI_DRV_MMZ_Alloc (err 0)
+hi_cipher: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_cipher: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_cipher: Unknown symbol osal_free_irq (err 0)
+hi_cipher: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_cipher: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_cipher: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_cipher: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_cipher: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_cipher: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_cipher: Unknown symbol HI_DRV_MMZ_Map (err 0)
+hi_cipher: Unknown symbol HI_DRV_MMZ_Release (err 0)
+hi_cipher: Unknown symbol HI_DRV_MMZ_MapToSmmu (err 0)
+hi_cipher: Unknown symbol osal_request_irq (err 0)
+hi_cipher: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_cipher: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_cipher: Unknown symbol HI_DRV_MMZ_UnmapFromSmmu (err 0)
+hi_cipher: Unknown symbol HI_LogOut (err 0)
+hi_cipher: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_cipher: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_cipher: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_cipher: Unknown symbol HI_DRV_MMZ_Unmap (err 0)
+hi_cipher: Unknown symbol HI_DRV_MMZ_Alloc (err 0)
+hi_cipher: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_cipher: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_cipher: Unknown symbol osal_free_irq (err 0)
+hi_cipher: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_cipher: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_cipher: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_hdmi: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_hdmi: Unknown symbol g_pstRegCrg (err 0)
+hi_hdmi: Unknown symbol HI_LogOut (err 0)
+hi_hdmi: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_hdmi: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_hdmi: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_hdmi: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_hdmi: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_hdmi: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_hdmi: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_hdmi: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_hdmi: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_hdmi: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_hdmi: Unknown symbol g_pstRegCrg (err 0)
+hi_hdmi: Unknown symbol HI_LogOut (err 0)
+hi_hdmi: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_hdmi: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_hdmi: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_hdmi: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_hdmi: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_hdmi: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_hdmi: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_hdmi: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_hdmi: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetSDPictureSetting (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_vou: Unknown symbol HI_DRV_SECSMMU_Buffer_Get (err 0)
+hi_vou: Unknown symbol HI_DRV_SECSMMU_Buffer_Put (err 0)
+hi_vou: Unknown symbol HI_DRV_MMZ_Unmap (err 0)
+hi_vou: Unknown symbol HI_DRV_MMZ_Alloc (err 0)
+hi_vou: Unknown symbol HI_DRV_LD_Stop_Statistics (err 0)
+hi_vou: Unknown symbol HI_DRV_LD_Start_Statistics (err 0)
+hi_vou: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_vou: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_vou: Unknown symbol HI_DRV_SYS_GetHdrSupport (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Query_Buffer_Source (err 0)
+hi_vou: Unknown symbol DRV_PQ_SetZme (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetACCHistGram (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetVdpZmeStrategy (err 0)
+hi_vou: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_vou: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_vou: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_vou: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_vou: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_vou: Unknown symbol DRV_PQ_UpdateACCHistGram (err 0)
+hi_vou: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_vou: Unknown symbol osal_free_irq (err 0)
+hi_vou: Unknown symbol HI_DRV_MMZ_Release (err 0)
+hi_vou: Unknown symbol osal_request_irq (err 0)
+hi_vou: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetHDPictureSetting (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetGfxHdrCfg (err 0)
+hi_vou: Unknown symbol HI_DRV_SECSMMU_Release (err 0)
+hi_vou: Unknown symbol HI_DRV_MMZ_Map (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetCSCCoef (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_vou: Unknown symbol HI_DRV_SYS_GetDolbyvisionSupport (err 0)
+hi_vou: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_vou: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_vou: Unknown symbol g_pstRegCrg (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetVdpZmeCoef (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_vou: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_vou: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Buffer_Put (err 0)
+hi_vou: Unknown symbol HI_LogOut (err 0)
+hi_vou: Unknown symbol HI_OSAL_Strncpy (err 0)
+hi_vou: Unknown symbol HI_DRV_SECSMMU_Alloc (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_vou: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_vou: Unknown symbol DRV_PQ_UpdateVdpPQ (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Buffer_Get (err 0)
+hi_vou: Unknown symbol DRV_PQ_Get8BitCSCCoef (err 0)
+hi_vou: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_vou: Unknown symbol DRV_PQ_SetDefaultParam (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetHdrCfg (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Alloc (err 0)
+hi_vou: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_vou: Unknown symbol HI_DRV_LD_Notify_Event (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetSDPictureSetting (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_vou: Unknown symbol HI_DRV_SECSMMU_Buffer_Get (err 0)
+hi_vou: Unknown symbol HI_DRV_SECSMMU_Buffer_Put (err 0)
+hi_vou: Unknown symbol HI_DRV_MMZ_Unmap (err 0)
+hi_vou: Unknown symbol HI_DRV_MMZ_Alloc (err 0)
+hi_vou: Unknown symbol HI_DRV_LD_Stop_Statistics (err 0)
+hi_vou: Unknown symbol HI_DRV_LD_Start_Statistics (err 0)
+hi_vou: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_vou: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_vou: Unknown symbol HI_DRV_SYS_GetHdrSupport (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Query_Buffer_Source (err 0)
+hi_vou: Unknown symbol DRV_PQ_SetZme (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetACCHistGram (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetVdpZmeStrategy (err 0)
+hi_vou: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_vou: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_vou: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_vou: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_vou: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_vou: Unknown symbol DRV_PQ_UpdateACCHistGram (err 0)
+hi_vou: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_vou: Unknown symbol osal_free_irq (err 0)
+hi_vou: Unknown symbol HI_DRV_MMZ_Release (err 0)
+hi_vou: Unknown symbol osal_request_irq (err 0)
+hi_vou: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetHDPictureSetting (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetGfxHdrCfg (err 0)
+hi_vou: Unknown symbol HI_DRV_SECSMMU_Release (err 0)
+hi_vou: Unknown symbol HI_DRV_MMZ_Map (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetCSCCoef (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_vou: Unknown symbol HI_DRV_SYS_GetDolbyvisionSupport (err 0)
+hi_vou: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_vou: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_vou: Unknown symbol g_pstRegCrg (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetVdpZmeCoef (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_vou: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_vou: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Buffer_Put (err 0)
+hi_vou: Unknown symbol HI_LogOut (err 0)
+hi_vou: Unknown symbol HI_OSAL_Strncpy (err 0)
+hi_vou: Unknown symbol HI_DRV_SECSMMU_Alloc (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_vou: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_vou: Unknown symbol DRV_PQ_UpdateVdpPQ (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Buffer_Get (err 0)
+hi_vou: Unknown symbol DRV_PQ_Get8BitCSCCoef (err 0)
+hi_vou: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_vou: Unknown symbol DRV_PQ_SetDefaultParam (err 0)
+hi_vou: Unknown symbol DRV_PQ_GetHdrCfg (err 0)
+hi_vou: Unknown symbol HI_DRV_SMMU_Alloc (err 0)
+hi_vou: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_vou: Unknown symbol HI_DRV_LD_Notify_Event (err 0)
+hi_gpio: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_gpio: Unknown symbol HI_LogOut (err 0)
+hi_gpio: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_gpio: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_gpio: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_gpio: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_gpio: Unknown symbol HI_LogOut (err 0)
+hi_gpio: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_gpio: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_gpio: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_gpio_i2c: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_gpio_i2c: Unknown symbol HI_LogOut (err 0)
+hi_gpio_i2c: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_gpio_i2c: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_gpio_i2c: Unknown symbol HI_LogOut (err 0)
+hi_gpio_i2c: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_i2c: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_i2c: Unknown symbol HI_LogOut (err 0)
+hi_i2c: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_i2c: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_i2c: Unknown symbol g_stI2cGpio (err 0)
+hi_i2c: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_i2c: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_i2c: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_i2c: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_i2c: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_i2c: Unknown symbol HI_LogOut (err 0)
+hi_i2c: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_i2c: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_i2c: Unknown symbol g_stI2cGpio (err 0)
+hi_i2c: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_i2c: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_i2c: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_i2c: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_tde: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_tde: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_tde: Unknown symbol HI_DRV_PM_UnRegister (err 0)
+hi_tde: Unknown symbol HI_DRV_MMZ_Release (err 0)
+hi_tde: Unknown symbol osal_request_irq (err 0)
+hi_tde: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_tde: Unknown symbol g_pstRegCrg (err 0)
+hi_tde: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_tde: Unknown symbol HI_LogOut (err 0)
+hi_tde: Unknown symbol HI_DRV_PM_Register (err 0)
+hi_tde: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_tde: Unknown symbol HI_DRV_MMZ_MapCache (err 0)
+hi_tde: Unknown symbol HI_DRV_MMZ_Unmap (err 0)
+hi_tde: Unknown symbol HI_DRV_MMZ_Flush (err 0)
+hi_tde: Unknown symbol HI_DRV_MMZ_Alloc (err 0)
+hi_tde: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_tde: Unknown symbol osal_free_irq (err 0)
+hi_tde: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_tde: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_tde: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_tde: Unknown symbol HI_DRV_PM_UnRegister (err 0)
+hi_tde: Unknown symbol HI_DRV_MMZ_Release (err 0)
+hi_tde: Unknown symbol osal_request_irq (err 0)
+hi_tde: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_tde: Unknown symbol g_pstRegCrg (err 0)
+hi_tde: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_tde: Unknown symbol HI_LogOut (err 0)
+hi_tde: Unknown symbol HI_DRV_PM_Register (err 0)
+hi_tde: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_tde: Unknown symbol HI_DRV_MMZ_MapCache (err 0)
+hi_tde: Unknown symbol HI_DRV_MMZ_Unmap (err 0)
+hi_tde: Unknown symbol HI_DRV_MMZ_Flush (err 0)
+hi_tde: Unknown symbol HI_DRV_MMZ_Alloc (err 0)
+hi_tde: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_tde: Unknown symbol osal_free_irq (err 0)
+hi_tde: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_otp: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_otp: Unknown symbol HI_LogOut (err 0)
+hi_otp: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_otp: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_otp: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_otp: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_otp: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_otp: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_otp: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_otp: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_otp: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_otp: Unknown symbol HI_LogOut (err 0)
+hi_otp: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_otp: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_otp: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_otp: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_otp: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_otp: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_otp: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_otp: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_demux: Unknown symbol HI_DRV_FILE_Open (err 0)
+hi_demux: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_demux: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_demux: Unknown symbol osal_request_irq (err 0)
+hi_demux: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_demux: Unknown symbol g_pstRegCrg (err 0)
+hi_demux: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_demux: Unknown symbol HI_LogOut (err 0)
+hi_demux: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_demux: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_demux: Unknown symbol HI_DRV_FILE_Close (err 0)
+hi_demux: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_demux: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_demux: Unknown symbol HI_DRV_FILE_Write (err 0)
+hi_demux: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_demux: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_demux: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_demux: Unknown symbol HI_DRV_FILE_GetStorePath (err 0)
+hi_demux: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_demux: Unknown symbol osal_free_irq (err 0)
+hi_demux: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_demux: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_demux: Unknown symbol HI_DRV_STAT_Event (err 0)
+hi_demux: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_demux: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_demux: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+random: nonblocking pool is initialized
+hi_demux: Unknown symbol HI_DRV_FILE_Open (err 0)
+hi_demux: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_demux: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_demux: Unknown symbol osal_request_irq (err 0)
+hi_demux: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_demux: Unknown symbol g_pstRegCrg (err 0)
+hi_demux: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_demux: Unknown symbol HI_LogOut (err 0)
+hi_demux: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_demux: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_demux: Unknown symbol HI_DRV_FILE_Close (err 0)
+hi_demux: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_demux: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_demux: Unknown symbol HI_DRV_FILE_Write (err 0)
+hi_demux: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_demux: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_demux: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_demux: Unknown symbol HI_DRV_FILE_GetStorePath (err 0)
+hi_demux: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_demux: Unknown symbol osal_free_irq (err 0)
+hi_demux: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_demux: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_demux: Unknown symbol HI_DRV_STAT_Event (err 0)
+hi_demux: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_demux: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_demux: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_adec: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_adec: Unknown symbol HI_LogOut (err 0)
+hi_adec: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_adec: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_adec: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_adec: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_adec: Unknown symbol HI_DRV_FILE_GetStorePath (err 0)
+hi_adec: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_adec: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_adec: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_adec: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_adec: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_adec: Unknown symbol HI_LogOut (err 0)
+hi_adec: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_adec: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_adec: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_adec: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_adec: Unknown symbol HI_DRV_FILE_GetStorePath (err 0)
+hi_adec: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_adec: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_adec: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_adec: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MMZ_Map (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MMZ_Release (err 0)
+hi_vfmw: Unknown symbol osal_request_irq (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_vfmw: Unknown symbol g_pstRegCrg (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SMMU_MapCache (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_vfmw: Unknown symbol HI_LogOut (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SECSMMU_Release (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MMZ_MapCache (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SECMMZ_Alloc (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MMZ_Unmap (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MMZ_Alloc (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SECSMMU_Alloc (err 0)
+hi_vfmw: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_vfmw: Unknown symbol osal_free_irq (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SMMU_Alloc (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SECMMZ_Release (err 0)
+hi_vfmw: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_vfmw: Unknown symbol HI_DRV_LD_Notify_Event (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MMZ_Map (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MMZ_Release (err 0)
+hi_vfmw: Unknown symbol osal_request_irq (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_vfmw: Unknown symbol g_pstRegCrg (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SMMU_MapCache (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_vfmw: Unknown symbol HI_LogOut (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SECSMMU_Release (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MMZ_MapCache (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SECMMZ_Alloc (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MMZ_Unmap (err 0)
+hi_vfmw: Unknown symbol HI_DRV_MMZ_Alloc (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SECSMMU_Alloc (err 0)
+hi_vfmw: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_vfmw: Unknown symbol osal_free_irq (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SMMU_Alloc (err 0)
+hi_vfmw: Unknown symbol HI_DRV_SECMMZ_Release (err 0)
+hi_vfmw: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_vfmw: Unknown symbol HI_DRV_LD_Notify_Event (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_vpss: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_vpss: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_vpss: Unknown symbol DRV_PQ_GetWbcInfo (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_vpss: Unknown symbol osal_request_irq (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_vpss: Unknown symbol g_pstRegCrg (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_vpss: Unknown symbol HI_LogOut (err 0)
+hi_vpss: Unknown symbol HI_DRV_SECSMMU_Release (err 0)
+hi_vpss: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_vpss: Unknown symbol HI_DRV_LOG_GetStorePath (err 0)
+hi_vpss: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_vpss: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_vpss: Unknown symbol DRV_PQ_UpdateVpssPQ (err 0)
+hi_vpss: Unknown symbol HI_DRV_SYS_GetMemConfig (err 0)
+hi_vpss: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_vpss: Unknown symbol DRV_PQ_GetMcdiSplitMode (err 0)
+hi_vpss: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_vpss: Unknown symbol HI_DRV_SECSMMU_Alloc (err 0)
+hi_vpss: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_vpss: Unknown symbol osal_free_irq (err 0)
+hi_vpss: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_Alloc (err 0)
+hi_vpss: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_vpss: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_vpss: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_vpss: Unknown symbol HI_DRV_LD_Notify_Event (err 0)
+hi_vpss: Unknown symbol HI_DRV_STAT_Event (err 0)
+hi_vpss: Unknown symbol DRV_PQ_SetAlgCalcCfg (err 0)
+hi_vpss: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_vpss: Unknown symbol DRV_PQ_SetVpssZme (err 0)
+hi_vpss: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_vpss: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_vpss: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_vpss: Unknown symbol DRV_PQ_GetWbcInfo (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_vpss: Unknown symbol osal_request_irq (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_vpss: Unknown symbol g_pstRegCrg (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_vpss: Unknown symbol HI_LogOut (err 0)
+hi_vpss: Unknown symbol HI_DRV_SECSMMU_Release (err 0)
+hi_vpss: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_vpss: Unknown symbol HI_DRV_LOG_GetStorePath (err 0)
+hi_vpss: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_vpss: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_vpss: Unknown symbol DRV_PQ_UpdateVpssPQ (err 0)
+hi_vpss: Unknown symbol HI_DRV_SYS_GetMemConfig (err 0)
+hi_vpss: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_vpss: Unknown symbol DRV_PQ_GetMcdiSplitMode (err 0)
+hi_vpss: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_vpss: Unknown symbol HI_DRV_SECSMMU_Alloc (err 0)
+hi_vpss: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_vpss: Unknown symbol osal_free_irq (err 0)
+hi_vpss: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_vpss: Unknown symbol HI_DRV_SMMU_Alloc (err 0)
+hi_vpss: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_vpss: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_vpss: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_vpss: Unknown symbol HI_DRV_LD_Notify_Event (err 0)
+hi_vpss: Unknown symbol HI_DRV_STAT_Event (err 0)
+hi_vpss: Unknown symbol DRV_PQ_SetAlgCalcCfg (err 0)
+hi_vpss: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_vpss: Unknown symbol DRV_PQ_SetVpssZme (err 0)
+hi_vpss: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_vdec: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_MapCache (err 0)
+hi_vdec: Unknown symbol HI_LogOut (err 0)
+hi_vdec: Unknown symbol HI_DRV_SECSMMU_Release (err 0)
+hi_vdec: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_vdec: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_vdec: Unknown symbol HI_DRV_LD_Start_Statistics (err 0)
+hi_vdec: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_vdec: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_vdec: Unknown symbol HI_DRV_SECSMMU_Alloc (err 0)
+hi_vdec: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_vdec: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_Alloc (err 0)
+hi_vdec: Unknown symbol HI_DRV_LD_Stop_Statistics (err 0)
+hi_vdec: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_vdec: Unknown symbol HI_DRV_STAT_Event (err 0)
+hi_vdec: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_vdec: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_vdec: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_MapCache (err 0)
+hi_vdec: Unknown symbol HI_LogOut (err 0)
+hi_vdec: Unknown symbol HI_DRV_SECSMMU_Release (err 0)
+hi_vdec: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_vdec: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_vdec: Unknown symbol HI_DRV_LD_Start_Statistics (err 0)
+hi_vdec: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_vdec: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_vdec: Unknown symbol HI_DRV_SECSMMU_Alloc (err 0)
+hi_vdec: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_vdec: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_vdec: Unknown symbol HI_DRV_SMMU_Alloc (err 0)
+hi_vdec: Unknown symbol HI_DRV_LD_Stop_Statistics (err 0)
+hi_vdec: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_vdec: Unknown symbol HI_DRV_STAT_Event (err 0)
+hi_vdec: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_vdec: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_adsp: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_adsp: Unknown symbol HI_LogOut (err 0)
+hi_adsp: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_adsp: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_adsp: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_adsp: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_adsp: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_adsp: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_adsp: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_adsp: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_adsp: Unknown symbol HI_LogOut (err 0)
+hi_adsp: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_adsp: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_adsp: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_adsp: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_adsp: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_adsp: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_adsp: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_aiao: Unknown symbol HI_DRV_FILE_Open (err 0)
+hi_aiao: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_aiao: Unknown symbol HI_DRV_MMZ_Release (err 0)
+hi_aiao: Unknown symbol osal_request_irq (err 0)
+hi_aiao: Unknown symbol g_pstRegCrg (err 0)
+hi_aiao: Unknown symbol HI_LogOut (err 0)
+hi_aiao: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_aiao: Unknown symbol g_pstRegPeri (err 0)
+hi_aiao: Unknown symbol HI_DRV_MMZ_MapCache (err 0)
+hi_aiao: Unknown symbol HI_DRV_FILE_Close (err 0)
+hi_aiao: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_aiao: Unknown symbol HI_DRV_MMZ_Unmap (err 0)
+hi_aiao: Unknown symbol HI_DRV_FILE_Write (err 0)
+hi_aiao: Unknown symbol HI_DRV_MMZ_Alloc (err 0)
+hi_aiao: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_aiao: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_aiao: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_aiao: Unknown symbol HI_DRV_FILE_GetStorePath (err 0)
+hi_aiao: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_aiao: Unknown symbol osal_free_irq (err 0)
+hi_aiao: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_aiao: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_aiao: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_aiao: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_aiao: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_aiao: Unknown symbol HI_DRV_FILE_Open (err 0)
+hi_aiao: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_aiao: Unknown symbol HI_DRV_MMZ_Release (err 0)
+hi_aiao: Unknown symbol osal_request_irq (err 0)
+hi_aiao: Unknown symbol g_pstRegCrg (err 0)
+hi_aiao: Unknown symbol HI_LogOut (err 0)
+hi_aiao: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_aiao: Unknown symbol g_pstRegPeri (err 0)
+hi_aiao: Unknown symbol HI_DRV_MMZ_MapCache (err 0)
+hi_aiao: Unknown symbol HI_DRV_FILE_Close (err 0)
+hi_aiao: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_aiao: Unknown symbol HI_DRV_MMZ_Unmap (err 0)
+hi_aiao: Unknown symbol HI_DRV_FILE_Write (err 0)
+hi_aiao: Unknown symbol HI_DRV_MMZ_Alloc (err 0)
+hi_aiao: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_aiao: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_aiao: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_aiao: Unknown symbol HI_DRV_FILE_GetStorePath (err 0)
+hi_aiao: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_aiao: Unknown symbol osal_free_irq (err 0)
+hi_aiao: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_aiao: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_aiao: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_aiao: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_aiao: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_sync: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_sync: Unknown symbol HI_LogOut (err 0)
+hi_sync: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_sync: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_sync: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_sync: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_sync: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_sync: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_sync: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_sync: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_sync: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_sync: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_sync: Unknown symbol HI_DRV_STAT_Event (err 0)
+hi_sync: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_sync: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_sync: Unknown symbol HI_LogOut (err 0)
+hi_sync: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_sync: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_sync: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_sync: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_sync: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_sync: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_sync: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_sync: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_sync: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_sync: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_sync: Unknown symbol HI_DRV_STAT_Event (err 0)
+hi_sync: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_pvr: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_pvr: Unknown symbol HI_LogOut (err 0)
+hi_pvr: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_pvr: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_pvr: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_pvr: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_pvr: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_pvr: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_pvr: Unknown symbol HI_LogOut (err 0)
+hi_pvr: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_pvr: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_pvr: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_pvr: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_pvr: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_mce: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_mce: Unknown symbol HI_LogOut (err 0)
+hi_mce: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_mce: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_mce: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_mce: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_mce: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_mce: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_mce: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_mce: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_mce: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_mce: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_mce: Unknown symbol HI_LogOut (err 0)
+hi_mce: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_mce: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_mce: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_mce: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_mce: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_mce: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_mce: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_mce: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_mce: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_tuner: Unknown symbol HI_DRV_FILE_Open (err 0)
+hi_tuner: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_tuner: Unknown symbol HI_DRV_GPIOI2C_ReadExt (err 0)
+hi_tuner: Unknown symbol HI_LogOut (err 0)
+hi_tuner: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_tuner: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_tuner: Unknown symbol HI_DRV_FILE_Close (err 0)
+hi_tuner: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_tuner: Unknown symbol HI_DRV_I2C_Read (err 0)
+hi_tuner: Unknown symbol HI_DRV_FILE_Write (err 0)
+hi_tuner: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_tuner: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_tuner: Unknown symbol HI_DRV_I2C_Write (err 0)
+hi_tuner: Unknown symbol HI_DRV_FILE_GetStorePath (err 0)
+hi_tuner: Unknown symbol HI_DRV_I2C_Read_Montage (err 0)
+hi_tuner: Unknown symbol HI_DRV_I2C_Read_SiLabs (err 0)
+hi_tuner: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_tuner: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_tuner: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_tuner: Unknown symbol HI_DRV_STAT_Event (err 0)
+hi_tuner: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_tuner: Unknown symbol HI_DRV_FILE_Open (err 0)
+hi_tuner: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_tuner: Unknown symbol HI_DRV_GPIOI2C_ReadExt (err 0)
+hi_tuner: Unknown symbol HI_LogOut (err 0)
+hi_tuner: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_tuner: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_tuner: Unknown symbol HI_DRV_FILE_Close (err 0)
+hi_tuner: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_tuner: Unknown symbol HI_DRV_I2C_Read (err 0)
+hi_tuner: Unknown symbol HI_DRV_FILE_Write (err 0)
+hi_tuner: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_tuner: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_tuner: Unknown symbol HI_DRV_I2C_Write (err 0)
+hi_tuner: Unknown symbol HI_DRV_FILE_GetStorePath (err 0)
+hi_tuner: Unknown symbol HI_DRV_I2C_Read_Montage (err 0)
+hi_tuner: Unknown symbol HI_DRV_I2C_Read_SiLabs (err 0)
+hi_tuner: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_tuner: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_tuner: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_tuner: Unknown symbol HI_DRV_STAT_Event (err 0)
+hi_tuner: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_fb: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_fb: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_fb: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_fb: Unknown symbol HI_DRV_MMZ_Release (err 0)
+hi_fb: Unknown symbol HI_DRV_MMZ_MapToSmmu (err 0)
+hi_fb: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_fb: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_fb: Unknown symbol HI_DRV_MMZ_UnmapFromSmmu (err 0)
+hi_fb: Unknown symbol HI_LogOut (err 0)
+hi_fb: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_fb: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_fb: Unknown symbol get_meminfo (err 0)
+hi_fb: Unknown symbol HI_DRV_MMZ_Alloc (err 0)
+hi_fb: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_fb: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_fb: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_fb: Unknown symbol HI_DRV_SMMU_Alloc (err 0)
+hi_fb: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_fb: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_fb: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_fb: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_fb: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_fb: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_fb: Unknown symbol HI_DRV_MMZ_Release (err 0)
+hi_fb: Unknown symbol HI_DRV_MMZ_MapToSmmu (err 0)
+hi_fb: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_fb: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_fb: Unknown symbol HI_DRV_MMZ_UnmapFromSmmu (err 0)
+hi_fb: Unknown symbol HI_LogOut (err 0)
+hi_fb: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_fb: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_fb: Unknown symbol get_meminfo (err 0)
+hi_fb: Unknown symbol HI_DRV_MMZ_Alloc (err 0)
+hi_fb: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_fb: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_fb: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_fb: Unknown symbol HI_DRV_SMMU_Alloc (err 0)
+hi_fb: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_fb: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_fb: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+mali: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+mali: Unknown symbol HI_DRV_MODULE_Register (err 0)
+mali: Unknown symbol HI_OSAL_Strncasecmp (err 0)
+mali: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+mali: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+mali: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+mali: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+mali: Unknown symbol HI_DRV_MODULE_Register (err 0)
+mali: Unknown symbol HI_OSAL_Strncasecmp (err 0)
+mali: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+mali: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+mali: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+misc hi_dbe: hi_dbe ready
+hi_ir: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_ir: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_ir: Unknown symbol HI_OSAL_Strncpy (err 0)
+hi_ir: Unknown symbol osal_request_irq (err 0)
+hi_ir: Unknown symbol HI_LogOut (err 0)
+hi_ir: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_ir: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_ir: Unknown symbol osal_free_irq (err 0)
+hi_ir: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_ir: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_ir: Unknown symbol HI_DRV_STAT_Event (err 0)
+hi_ir: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_ir: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_ir: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_ir: Unknown symbol HI_OSAL_Strncpy (err 0)
+hi_ir: Unknown symbol osal_request_irq (err 0)
+hi_ir: Unknown symbol HI_LogOut (err 0)
+hi_ir: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_ir: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_ir: Unknown symbol osal_free_irq (err 0)
+hi_ir: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_ir: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_ir: Unknown symbol HI_DRV_STAT_Event (err 0)
+hi_ir: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_jpeg: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_jpeg: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_jpeg: Unknown symbol HI_DRV_PM_UnRegister (err 0)
+hi_jpeg: Unknown symbol osal_request_irq (err 0)
+hi_jpeg: Unknown symbol g_pstRegCrg (err 0)
+hi_jpeg: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_jpeg: Unknown symbol HI_DRV_PM_Register (err 0)
+hi_jpeg: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_jpeg: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_jpeg: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_jpeg: Unknown symbol osal_free_irq (err 0)
+hi_jpeg: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_jpeg: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_jpeg: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_jpeg: Unknown symbol HI_DRV_PM_UnRegister (err 0)
+hi_jpeg: Unknown symbol osal_request_irq (err 0)
+hi_jpeg: Unknown symbol g_pstRegCrg (err 0)
+hi_jpeg: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_jpeg: Unknown symbol HI_DRV_PM_Register (err 0)
+hi_jpeg: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_jpeg: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_jpeg: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_jpeg: Unknown symbol osal_free_irq (err 0)
+hi_jpeg: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_png: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_png: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_png: Unknown symbol HI_DRV_PM_UnRegister (err 0)
+hi_png: Unknown symbol osal_request_irq (err 0)
+hi_png: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_png: Unknown symbol g_pstRegCrg (err 0)
+hi_png: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_png: Unknown symbol HI_LogOut (err 0)
+hi_png: Unknown symbol HI_DRV_PM_Register (err 0)
+hi_png: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_png: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_png: Unknown symbol osal_free_irq (err 0)
+hi_png: Unknown symbol HI_DRV_SMMU_Alloc (err 0)
+hi_png: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_png: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_png: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_png: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_png: Unknown symbol HI_DRV_PM_UnRegister (err 0)
+hi_png: Unknown symbol osal_request_irq (err 0)
+hi_png: Unknown symbol HI_DRV_SMMU_Release (err 0)
+hi_png: Unknown symbol g_pstRegCrg (err 0)
+hi_png: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_png: Unknown symbol HI_LogOut (err 0)
+hi_png: Unknown symbol HI_DRV_PM_Register (err 0)
+hi_png: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_png: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_png: Unknown symbol osal_free_irq (err 0)
+hi_png: Unknown symbol HI_DRV_SMMU_Alloc (err 0)
+hi_png: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_png: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_advca: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_advca: Unknown symbol HI_LogOut (err 0)
+hi_advca: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_advca: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_advca: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_advca: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_advca: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_advca: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_advca: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_advca: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_advca: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_advca: Unknown symbol HI_LogOut (err 0)
+hi_advca: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_advca: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_advca: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_advca: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_advca: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_advca: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_advca: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_advca: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_venc: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_venc: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_venc: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_venc: Unknown symbol HI_OSAL_Strncpy (err 0)
+hi_venc: Unknown symbol osal_request_irq (err 0)
+hi_venc: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_venc: Unknown symbol g_pstRegCrg (err 0)
+hi_venc: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_venc: Unknown symbol HI_LogOut (err 0)
+hi_venc: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_venc: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_venc: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_venc: Unknown symbol HI_OSAL_Strncat (err 0)
+hi_venc: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_venc: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_venc: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_venc: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_venc: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_venc: Unknown symbol osal_free_irq (err 0)
+hi_venc: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_venc: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_venc: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_venc: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_venc: Unknown symbol HI_DRV_LD_Notify_Event (err 0)
+hi_venc: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_venc: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_venc: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_venc: Unknown symbol HI_DRV_SMMU_Map (err 0)
+hi_venc: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_venc: Unknown symbol HI_DRV_SMMU_Unmap (err 0)
+hi_venc: Unknown symbol HI_OSAL_Strncpy (err 0)
+hi_venc: Unknown symbol osal_request_irq (err 0)
+hi_venc: Unknown symbol HI_DRV_SMMU_UnmapAndRelease (err 0)
+hi_venc: Unknown symbol g_pstRegCrg (err 0)
+hi_venc: Unknown symbol HI_DRV_SMMU_GetPageTableAddr (err 0)
+hi_venc: Unknown symbol HI_LogOut (err 0)
+hi_venc: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_venc: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_venc: Unknown symbol HI_DRV_SMMU_AllocAndMap (err 0)
+hi_venc: Unknown symbol HI_OSAL_Strncat (err 0)
+hi_venc: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_venc: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_venc: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_venc: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_venc: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_venc: Unknown symbol osal_free_irq (err 0)
+hi_venc: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_venc: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_venc: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_venc: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_venc: Unknown symbol HI_DRV_LD_Notify_Event (err 0)
+hi_venc: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_venc: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_venc: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_aenc: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_aenc: Unknown symbol HI_LogOut (err 0)
+hi_aenc: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_aenc: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_aenc: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_aenc: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_aenc: Unknown symbol HI_DRV_FILE_GetStorePath (err 0)
+hi_aenc: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_aenc: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_aenc: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_aenc: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_aenc: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_aenc: Unknown symbol HI_LogOut (err 0)
+hi_aenc: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_aenc: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_aenc: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_aenc: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_aenc: Unknown symbol HI_DRV_FILE_GetStorePath (err 0)
+hi_aenc: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_aenc: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_aenc: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_aenc: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_keyled: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_keyled: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_keyled: Unknown symbol osal_request_irq (err 0)
+hi_keyled: Unknown symbol HI_LogOut (err 0)
+hi_keyled: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_keyled: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_keyled: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_keyled: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_keyled: Unknown symbol osal_free_irq (err 0)
+hi_keyled: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_keyled: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_keyled: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_keyled: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_keyled: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_keyled: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_keyled: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_keyled: Unknown symbol osal_request_irq (err 0)
+hi_keyled: Unknown symbol HI_LogOut (err 0)
+hi_keyled: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_keyled: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_keyled: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_keyled: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_keyled: Unknown symbol osal_free_irq (err 0)
+hi_keyled: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_keyled: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_keyled: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_keyled: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_keyled: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_sci: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_sci: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_sci: Unknown symbol osal_request_irq (err 0)
+hi_sci: Unknown symbol g_pstRegCrg (err 0)
+hi_sci: Unknown symbol HI_LogOut (err 0)
+hi_sci: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_sci: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_sci: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_sci: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_sci: Unknown symbol osal_free_irq (err 0)
+hi_sci: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_sci: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_sci: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_sci: Unknown symbol HI_DRV_SYS_SetIrqAffinity (err 0)
+hi_sci: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_sci: Unknown symbol osal_request_irq (err 0)
+hi_sci: Unknown symbol g_pstRegCrg (err 0)
+hi_sci: Unknown symbol HI_LogOut (err 0)
+hi_sci: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_sci: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_sci: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_sci: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_sci: Unknown symbol osal_free_irq (err 0)
+hi_sci: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_sci: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_sci: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_vi: Unknown symbol HI_DRV_FILE_Open (err 0)
+hi_vi: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_vi: Unknown symbol HI_DRV_MMZ_Map (err 0)
+hi_vi: Unknown symbol HI_LogOut (err 0)
+hi_vi: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_vi: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_vi: Unknown symbol HI_DRV_FILE_Close (err 0)
+hi_vi: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_vi: Unknown symbol HI_DRV_LD_Start_Statistics (err 0)
+hi_vi: Unknown symbol HI_DRV_MMZ_Unmap (err 0)
+hi_vi: Unknown symbol HI_DRV_FILE_Write (err 0)
+hi_vi: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_vi: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_vi: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_vi: Unknown symbol HI_DRV_FILE_GetStorePath (err 0)
+hi_vi: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_vi: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_vi: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_vi: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_vi: Unknown symbol HI_DRV_LD_Stop_Statistics (err 0)
+hi_vi: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_vi: Unknown symbol HI_DRV_LD_Notify_Event (err 0)
+hi_vi: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_vi: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_vi: Unknown symbol HI_DRV_FILE_Open (err 0)
+hi_vi: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_vi: Unknown symbol HI_DRV_MMZ_Map (err 0)
+hi_vi: Unknown symbol HI_LogOut (err 0)
+hi_vi: Unknown symbol HI_DRV_SYS_GetTimeStampMs (err 0)
+hi_vi: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_vi: Unknown symbol HI_DRV_FILE_Close (err 0)
+hi_vi: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_vi: Unknown symbol HI_DRV_LD_Start_Statistics (err 0)
+hi_vi: Unknown symbol HI_DRV_MMZ_Unmap (err 0)
+hi_vi: Unknown symbol HI_DRV_FILE_Write (err 0)
+hi_vi: Unknown symbol HI_DRV_UserCopy (err 0)
+hi_vi: Unknown symbol HI_DRV_MMZ_UnmapAndRelease (err 0)
+hi_vi: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_vi: Unknown symbol HI_DRV_FILE_GetStorePath (err 0)
+hi_vi: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_vi: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_vi: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_vi: Unknown symbol HI_OSAL_Strncmp (err 0)
+hi_vi: Unknown symbol HI_DRV_LD_Stop_Statistics (err 0)
+hi_vi: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_vi: Unknown symbol HI_DRV_LD_Notify_Event (err 0)
+hi_vi: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_vi: Unknown symbol HI_DRV_MMZ_AllocAndMap (err 0)
+hi_pmoc: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_pmoc: Unknown symbol g_pstRegSysCtrl (err 0)
+hi_pmoc: Unknown symbol g_pstRegCrg (err 0)
+hi_pmoc: Unknown symbol HI_LogOut (err 0)
+hi_pmoc: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_pmoc: Unknown symbol g_pstRegPeri (err 0)
+hi_pmoc: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_pmoc: Unknown symbol HAL_OTP_V200_ReadByte (err 0)
+hi_pmoc: Unknown symbol HI_OSAL_Strncasecmp (err 0)
+hi_pmoc: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_pmoc: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_pmoc: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_pmoc: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_pmoc: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_pmoc: Unknown symbol HAL_OTP_V200_Read (err 0)
+hi_pmoc: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_pmoc: Unknown symbol HI_DRV_SYS_GetChipPackageType (err 0)
+hi_pmoc: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+hi_pmoc: Unknown symbol HI_DRV_MODULE_UnRegister (err 0)
+hi_pmoc: Unknown symbol g_pstRegSysCtrl (err 0)
+hi_pmoc: Unknown symbol g_pstRegCrg (err 0)
+hi_pmoc: Unknown symbol HI_LogOut (err 0)
+hi_pmoc: Unknown symbol HI_DRV_MODULE_Register (err 0)
+hi_pmoc: Unknown symbol g_pstRegPeri (err 0)
+hi_pmoc: Unknown symbol HI_DRV_DEV_UnRegister (err 0)
+hi_pmoc: Unknown symbol HAL_OTP_V200_ReadByte (err 0)
+hi_pmoc: Unknown symbol HI_OSAL_Strncasecmp (err 0)
+hi_pmoc: Unknown symbol HI_DRV_PROC_EchoHelper (err 0)
+hi_pmoc: Unknown symbol HI_DRV_PROC_AddModule (err 0)
+hi_pmoc: Unknown symbol HI_DRV_DEV_Register (err 0)
+hi_pmoc: Unknown symbol HI_OSAL_Snprintf (err 0)
+hi_pmoc: Unknown symbol HI_DRV_PROC_RemoveModule (err 0)
+hi_pmoc: Unknown symbol HAL_OTP_V200_Read (err 0)
+hi_pmoc: Unknown symbol HI_DRV_SYS_GetChipVersion (err 0)
+hi_pmoc: Unknown symbol HI_DRV_SYS_GetChipPackageType (err 0)
+hi_pmoc: Unknown symbol HI_DRV_MODULE_GetFunction (err 0)
+ehci-platform: EHCI generic platform driver
+ehci-platform f9890000.ehci: EHCI Host Controller
+ehci-platform f9890000.ehci: new USB bus registered, assigned bus number 1
+ehci-platform f9890000.ehci: irq 34, io mem 0xf9890000
+ehci-platform f9890000.ehci: USB 2.0 started, EHCI 1.00
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 3 ports detected
+ohci-platform: OHCI generic platform driver
+ohci-platform f9880000.ohci: Generic Platform OHCI controller
+ohci-platform f9880000.ohci: new USB bus registered, assigned bus number 2
+ohci-platform f9880000.ohci: irq 35, io mem 0xf9880000
+hub 2-0:1.0: USB hub found
+hub 2-0:1.0: 3 ports detected
+tntfs: module license 'Commercial. For support email ntfs-support@tuxera.com.' taints kernel.
+Disabling lock debugging due to kernel taint
+Starting fusion driver v9.0.2
+  -> initializing shared area at dd3c4000
+fusion: unable to register major 250. Registered 248 instead
+Auto login as root ...
+login[1307]: root login on 'ttyS000'
+# usb 1-2: new high-speed USB device number 2 using ehci-platform
+
+# 
+# lsmod
+Module                  Size  Used by
+fusion                113691  0 
+ohci_platform           4651  0 
+ehci_platform           5346  0 
+hi_dbe                  5485  0 
+# insmod /kmod/cfg80211.ko 
+# insmod /kmod/rtl8822cu.ko 
+RTW: module init start
+RTW: rtl88x2cu v5.7.3_33533.20190527_COEX20190403-0c0c
+RTW: build time: Jun 12 2019 12:16:37
+RTW: rtl88x2cu BT-Coex version = COEX20190403-0c0c
+RTW: rtw_inetaddr_notifier_register
+RTW: 
+usb_endpoint_descriptor(0):
+RTW: bLength=7
+RTW: bDescriptorType=5
+RTW: bEndpointAddress=84
+RTW: wMaxPacketSize=512
+RTW: bInterval=0
+RTW: RT_usb_endpoint_is_bulk_in = 4
+RTW: 
+usb_endpoint_descriptor(1):
+RTW: bLength=7
+RTW: bDescriptorType=5
+RTW: bEndpointAddress=5
+RTW: wMaxPacketSize=512
+RTW: bInterval=0
+RTW: RT_usb_endpoint_is_bulk_out = 5
+RTW: 
+usb_endpoint_descriptor(2):
+RTW: bLength=7
+RTW: bDescriptorType=5
+RTW: bEndpointAddress=6
+RTW: wMaxPacketSize=512
+RTW: bInterval=0
+RTW: RT_usb_endpoint_is_bulk_out = 6
+RTW: 
+usb_endpoint_descriptor(3):
+RTW: bLength=7
+RTW: bDescriptorType=5
+RTW: bEndpointAddress=87
+RTW: wMaxPacketSize=64
+RTW: bInterval=3
+RTW: RT_usb_endpoint_is_int_in = 7, Interval = 3
+RTW: 
+usb_endpoint_descriptor(4):
+RTW: bLength=7
+RTW: bDescriptorType=5
+RTW: bEndpointAddress=8
+RTW: wMaxPacketSize=512
+RTW: bInterval=0
+RTW: RT_usb_endpoint_is_bulk_out = 8
+RTW: nr_endpoint=5, in_num=2, out_num=3
+
+RTW: USB_SPEED_HIGH
+RTW: CHIP TYPE: RTL8822C
+RTW: [HALMAC]11692M
+HALMAC_MAJOR_VER = 1
+HALMAC_PROTOTYPE_VER = 5
+HALMAC_MINOR_VER = 14
+HALMAC_PATCH_VER = 27
+RTW: rtw_hal_config_rftype RF_Type is 2 TotalTxPath is 2
+RTW: Chip Version Info: CHIP_8822C_Normal_Chip_UMC_D_CUT_2T2R_RomVer(3)
+RTW: config_chip_out_EP OutEpQueueSel(0x07), OutEpNumber(3)
+RTW: ERROR [HALMAC][ERR]Dump efuse in suspend
+RTW: is_valid_id_status: HALMAC_FEATURE_DUMP_LOGICAL_EFUSE
+RTW: HW EFUSE
+RTW: 0x000: 29 81 00 8F  FF 20 09 00  98 04 E4 35  10 03 F1 EB  
+RTW: 0x010: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x020: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x030: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x040: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x050: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x060: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x070: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x080: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x090: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x0A0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x0B0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x0C0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x0D0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x0E0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x0F0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x100: F0 94 65 D3  58 C5 FF FF  CD F0 FF FF  FF FF FF FF  
+RTW: 0x110: C0 C0 FC A0  D8 D8 FD FF  35 8C FF FF  FF FF FF FF  
+RTW: 0x120: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x130: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x140: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x150: FF FF 2C C8  FF 7E FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x160: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x170: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x180: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x190: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x1A0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x1B0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x1C0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x1D0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x1E0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x1F0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x200: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x210: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x220: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x230: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x240: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x250: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x260: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x270: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x280: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x290: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x2A0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x2B0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x2C0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x2D0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x2E0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: 0x2F0: FF FF FF FF  FF FF FF FF  FF FF FF FF  FF FF FF FF  
+RTW: rtw_read_efuse_from_file /system/etc/wifi/wifi_efuse_88x2cu.map is not readable
+RTW: WARN rtl8822c_read_efuse: invalid phy efuse and read from file fail, will use driver default!!
+RTW: EEPROM ID = 0x8129
+RTW: EEPROM Version = 255
+RTW: rtw_read_macaddr_from_file /data/wifimac.txt is not readable
+RTW: [A] 2G G00 CCK-1T base:51 from IC_DEF
+RTW: [A] 2G G01 CCK-1T base:51 from IC_DEF
+RTW: [A] 2G G02 CCK-1T base:51 from IC_DEF
+RTW: [A] 2G G03 CCK-1T base:51 from IC_DEF
+RTW: [A] 2G G04 CCK-1T base:51 from IC_DEF
+RTW: [A] 2G G05 CCK-1T base:51 from IC_DEF
+RTW: [A] 2G G00 BW40-1S base:51 from IC_DEF
+RTW: [A] 2G G01 BW40-1S base:51 from IC_DEF
+RTW: [A] 2G G02 BW40-1S base:51 from IC_DEF
+RTW: [A] 2G G03 BW40-1S base:51 from IC_DEF
+RTW: [A] 2G G04 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G00 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G01 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G02 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G03 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G04 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G05 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G06 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G07 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G08 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G09 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G10 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G11 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G12 BW40-1S base:51 from IC_DEF
+RTW: [A] 5G G13 BW40-1S base:51 from IC_DEF
+RTW: [B] 2G G00 CCK-1T base:51 from IC_DEF
+RTW: [B] 2G G01 CCK-1T base:51 from IC_DEF
+RTW: [B] 2G G02 CCK-1T base:51 from IC_DEF
+RTW: [B] 2G G03 CCK-1T base:51 from IC_DEF
+RTW: [B] 2G G04 CCK-1T base:51 from IC_DEF
+RTW: [B] 2G G05 CCK-1T base:51 from IC_DEF
+RTW: [B] 2G G00 BW40-1S base:51 from IC_DEF
+RTW: [B] 2G G01 BW40-1S base:51 from IC_DEF
+RTW: [B] 2G G02 BW40-1S base:51 from IC_DEF
+RTW: [B] 2G G03 BW40-1S base:51 from IC_DEF
+RTW: [B] 2G G04 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G00 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G01 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G02 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G03 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G04 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G05 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G06 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G07 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G08 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G09 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G10 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G11 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G12 BW40-1S base:51 from IC_DEF
+RTW: [B] 5G G13 BW40-1S base:51 from IC_DEF
+RTW: EEPROM Regulatory=0x00
+RTW: EEPROM Board Type=0x00
+RTW: EEPROM Disable BT-coex, ant_num=2
+RTW: hal_com_config_channel_plan use def_chplan:0x7F
+RTW: EEPROM crystal_cap=0x3f
+RTW: EEPROM ThermalMeter=0x12
+RTW: EEPROM Customer ID=0xff
+RTW: EEPROM SupportRemoteWakeup=0
+RTW: EEPROM PAType_2G is 0x0, ExternalPA_2G = 0
+RTW: EEPROM PAType_5G is 0x0, external_pa_5g = 0
+RTW: EEPROM LNAType_2G is 0x0, ExternalLNA_2G = 0
+RTW: EEPROM LNAType_5G is 0x0, external_lna_5g = 0
+RTW: EEPROM TypeGPA = 0x0
+RTW: EEPROM TypeAPA = 0x0
+RTW: EEPROM TypeGLNA = 0x0
+RTW: EEPROM TypeALNA = 0x0
+RTW: ERROR 
+
+Empty EFUSE with unknown REF type!!
+
+RTW: ERROR please program efuse or specify correct RFE type.
+RTW: ERROR cmd: insmod rtl8822cx.ko rtw_RFE_type=<rfe_type>
+
+RTW: rtw_hal_read_chip_info in 838 ms
+RTW: rtw_usb_primary_adapter_init Failed!
+usbcore: registered new interface driver rtl88x2cu
+RTW: module init ret=0
+# ifconfig wlan0 up
+ifconfig: SIOCGIFFLAGS: No such device
+# 
+# iwc

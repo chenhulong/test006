@@ -1,0 +1,293 @@
+https://blog.csdn.net/qq_24489717/article/details/53163608
+https://blog.csdn.net/aa3115386/article/details/68483127
+https://blog.csdn.net/chenzhengfeng/article/details/81743626
+https://blog.csdn.net/sinat_34349564/article/details/52487860
+
+https://blog.csdn.net/qq_26012495/article/details/80503241
+创建GitLab远程仓库，并将本地仓库与之关联
+
+https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8
+5 Git 基础 - 远程仓库的使用
+
+https://blog.csdn.net/xb565517830/article/details/80742073
+https://blog.csdn.net/vslyu/article/details/80337675
+https://jingyan.baidu.com/article/64d05a02ffba86de55f73b03.html
+https://blog.csdn.net/fu123123fu/article/details/86577091
+https://blog.csdn.net/feng98ren/article/details/79141781
+
+
+//origin 指的就是远程仓库，非本地仓库，在命令行命令中出现的 origin ，指操作是对远程仓库操作
+git init
+git add README.md
+//提交到stage区
+git commit -m""
+//连接绑定远程仓库。命令 git remote add origin https://github.com/xxx/test.git 创建远程仓库后，会让git记录远程仓库叫origin
+git remote add origin https://github.com/xxx/test.git
+//推送上传至远程仓库。当git push -u origin master，git 就知道是对远程仓库origin（https://github.com/xxx/test.git）提交文件
+git push -u origin master
+
+
+origin对应的是你的repo(代码库repository)地址的 alias
+~/coding/feeluown > git remote -v
+origin    git@github.com:cosven/feeluown.git (fetch)
+origin    git@github.com:cosven/feeluown.git (push)
+master 是分支名字。
+
+git push/pull  origin master
+
+
+
+/////////
+你的代码库(repository)可以存放在你的电脑里，同时你也可以把代码库托管到Github的服务器上。在默认情况下，origin指向的就是你本地的代码库托管在Github上的版本。我们假设你首先在github上创建了一个Repository，叫做repository，假设你的Github ID是user1,这个时候指向你的代码库的链接是
+https://github.com/user1/repository
+如果你在terminal里输入
+
+git clone https://github.com/user1/repository
+那么git就会在本地拷贝一份托管在github上的代码库这个时候你cd到repository然后输入
+
+git remote -v
+你会看到控制台输出
+
+origin https://github.com/user1/repository.git (fetch)
+origin https://github.com/user1/repository.git (push)
+也就是说git为你默认创建了一个指向远端代码库的origin（因为你是从这个地址clone下来的）再假设现在有一个用户user2 fork了你个repository，那么他的代码库链接就是这个样子
+
+https://github.com/user2/repository
+如果他也照着这个clone一把，然后在他的控制台里输入git remote -v 
+他会看的的就是
+
+origin https://github.com/user2/repository.git (fetch)
+origin https://github.com/user2/repository.git (push)
+可以看的origin指向的位置是user2的的远程代码库这个时候，如果user2想加一个远程指向你的代码库，他可以在控制台输入
+
+git remote add upstream https://github.com/user1/repository.git
+然后再输入一遍 git remote -v输出结果就会变为
+
+origin https://github.com/user2/repository.git (fetch)
+origin https://github.com/user2/repository.git (push)
+upstream https://github.com/user1/repository.git (push)
+upstream https://github.com/user1/repository.git (push)
+增加了指向user1代码库的upstream，也就是之前对指向位置的命名。总结来讲，顾名思义，origin就是一个名字，它是在你clone一个托管在Github上代码库时，git为你默认创建的指向这个远程代码库的标签， @陈肖恩的答案并不准确，origin指向的是repository，master只是这个repository中默认创建的第一个branch。当你git push的时候因为origin和master都是默认创建的，所以可以这样省略，但是这个是bad practice，因为当你换一个branch再git push的时候，有时候就纠结了
+
+//////////////
+Git remote 修改源
+git commit -m "Change repo." # 先把所有为保存的修改打包为一个commit
+git remote remove origin # 删掉原来git源
+git remote add origin [YOUR NEW .GIT URL] # 将新源地址写入本地版本库配置文件
+git push -u origin master # 提交所有代码
+
+git remote set-url origin remote_git_address
+//////////////
+$ git push origin
+上面命令表示，将当前分支推送到origin主机的对应分支。 
+如果当前分支只有一个追踪分支，那么主机名都可以省略。 
+
+$ git push 如果当前分支与多个主机存在追踪关系，那么这个时候-u选项会指定一个默认主机，这样后面就可以不加任何参数使用git push。
+
+$ git push -u origin master 上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。
+
+ 不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。
+//////////////
+推送本地分支local_branch到远程分支 remote_branch并建立关联关系
+      a.远程已有remote_branch分支并且已经关联本地分支local_branch且本地已经切换到local_branch
+          git push
+     b.远程已有remote_branch分支但未关联本地分支local_branch且本地已经切换到local_branch
+         git push -u origin/remote_branch
+     c.远程没有有remote_branch分支并，本地已经切换到local_branch
+        git push origin local_branch:remote_branch
+//////////////
+git push代码到远程新分支
+Git push
+
+获取远程代码修改后,想要push到远端与原来不同的新分支，可以使用下面的命令实现：
+git push origin 本地分支:远端希望创建的分支
+
+例如git下来的分支为master
+
+git branch
+>>> *master
+git push origin master:my_remote_new_branch
+#远端即可创建新的分支my_remote_new_branch,提交本地修改
+
+https://blog.csdn.net/u014636245/article/details/83382907
+//////////////
+https://blog.csdn.net/xiaoxuantengkong/article/details/46128621
+//////////////
+在Git中，origin / master与origin master之间有什么区别？
+本文链接：https://blog.csdn.net/u014599371/article/details/90055737
+这里实际上有三件事：origin master是两件事，origin/master一件事。共计三件事。
+
+两个分支：
+
+master?是一个本地分支
+origin/master是远程分支（它是名为“origin”?的远程分支的本地副本，名为“master”）
+一个遥控器：
+
+origin?是一个遥远的
+示例：拉入两个步骤
+由于origin/master是分支，您可以合并它。这里有两个步骤：
+
+第一步，master从遥控器中取出origin。该master分支上origin会被获取并在本地副本将被命名为origin/master。
+
+git fetch origin master
+然后你合并origin/master进去master。
+
+git merge origin/master
+然后，您可以将新的更改推master回到origin：
+
+git push origin master
+更多例子
+您可以按名称获取多个分支...
+
+git fetch origin master stable oldstable
+你可以合并多个分支......
+
+git merge origin/master hotfix-2275 hotfix-2276 hotfix-2290
+————————————————
+原文链接：https://blog.csdn.net/u014599371/article/details/90055737
+/////////////////
+
+
+git删除本地分支和删除远程分支
+https://blog.csdn.net/qq_18863573/article/details/97893654
+https://blog.csdn.net/Sub_lele/article/details/52289996
+https://blog.csdn.net/duxing_langzi/article/details/80295573
+
+换到master分支
+git checkout master
+
+查看已有的本地及远程分支
+git branch -a
+
+删除远程分支
+git push origin --delete dev
+
+删除后，再次查看分支情况
+git branch -a
+
+删除本地分支
+git branch -D dev
+远程分支和本地分支删除完毕
+
+
+git仓库迁移的两种解决方案
+https://www.cnblogs.com/ZhangRuoXu/p/6706530.html
+
+Git仓库迁移而不丢失log的方法
+要求能保留原先的commit记录，应该如何迁移呢？
+同时，本地已经clone了原仓库，要配置成新的仓库地址，该如何修改呢？
+注意：如果使用了代码审核工具Gerrit，那么在进行操作之前需要将Gerrit关掉，等成功恢复后再将Gerrit开户即可
+1、使用git push --mirror
+先了解一些git的基本参数介绍
+git clone --bare
+
+GIT-CLONE(1)                      Git Manual                      GIT-CLONE(1)
+
+NAME
+       git-clone - Clone a repository into a new directory
+
+SYNOPSIS
+       git clone [--template=<template_directory>]
+                 [-l] [-s] [--no-hardlinks] [-q] [-n] [--bare] [--mirror]
+                 [-o <name>] [-b <name>] [-u <upload-pack>] [--reference <repository>]
+                 [--depth <depth>] [--recursive] [--] <repository> [<directory>]
+        --bare
+            Make a bare GIT repository. That is, instead of creating <directory> and placing the administrative files
+           in <directory>/.git, make the <directory> itself the $GIT_DIR. This obviously implies the -n because there
+           is nowhere to check out the working tree. Also the branch heads at the remote are copied directly to
+           corresponding local branch heads, without mapping them to refs/remotes/origin/. When this option is used,
+           neither remote-tracking branches nor the related configuration variables are created.
+git push --mirror
+
+--mirror
+           Instead of naming each ref to push, specifies that all refs under refs/ (which includes but is not limited
+           to refs/heads/, refs/remotes/, and refs/tags/) be mirrored to the remote repository. Newly created local
+           refs will be pushed to the remote end, locally updated refs will be force updated on the remote end, and
+           deleted refs will be removed from the remote end. This is the default if the configuration option
+           remote.<remote>.mirror is set.
+1、建立新仓库
+1). 从原地址克隆一份裸版本库，比如原本托管于 GitHub，或者是本地的私有仓库
+git clone --bare git://192.168.10.XX/git_repo/project_name.git
+2). 然后到新的 Git 服务器上创建一个新项目，比如 GitCafe，亦或是本地的私有仓库，如192.168.20.XX
+su - git
+cd /path/to/path/
+mkdir new_project_name.git
+git init --bare new_project_name.git
+3). 以镜像推送的方式上传代码到 GitCafe 服务器上。
+请确保已经添加了公钥到新的机器上
+cd project_name.git
+git push --mirror git@192.168.20.XX/path/to/path/new_project_name.git
+4). 删除本地代码
+cd ..
+rm -rf project_name.git
+5). 到新服务器上找到 Clone 地址，直接Clone到本地就可以了。
+git clone git@192.168.20.XX/path/to/path/new_project_name.git
+这种方式可以保留原版本库中的所有内容。
+
+2、切换remote_url
+先查看remote的名字
+
+git branch -r
+假设你的remote是origin，用git remote set_url 更换地址
+
+git remote set-url origin remote_git_address
+remote_git_address更换成你的新的仓库地址。
+
+第二种切换remote_url的方法更直接，直接更改.git/conf配置文件里的ip地址就行。
+
+Yesterday is history.
+Tomorrow is a mystery.
+But today is a gift.
+That is why it's called the present.
+The old game: give a wolf a taste, then keep him hungry.
+
+
+
+git 更换远程仓库路径
+https://blog.csdn.net/haithink/article/details/80996109
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin git@10.0.0.10:Panghaiyan/documents.git
+git push -u origin –all
+git push -u origin –tags
+
+//////////////////////////////////////////
+从一个git仓库迁移到另外一个git仓库
+1、从原地址克隆一份裸版本库，比如原本托管于 GitHub。
+git clone --bare http://github....(原始仓库地址)
+
+ 2、进入克隆下来的目录
+cd project.git（project即为你的项目名称）
+
+3、以镜像推送的方式上传代码到新的仓库地址。
+git push --mirror http：//...(目标仓库地址)
+
+///////////
+如果你想从别的 Git 托管服务那里复制一份源代码到新的 Git 托管服务器上的话，可以通过以下步骤来操作。
+
+1). 从原地址克隆一份裸版本库，比如原本托管于 GitHub。
+git clone --bare git://github.com/username/project.git
+2). 然后到新的 Git 服务器上创建一个新项目，比如 GitCafe。
+3). 以镜像推送的方式上传代码到 GitCafe 服务器上。
+cd project.git
+git push --mirror git@gitcafe.com/username/newproject.git
+4). 删除本地代码
+cd ..
+rm -rf project.git
+5). 到新服务器 GitCafe 上找到 Clone 地址，直接 Clone 到本地就可以了。
+git clone git@gitcafe.com/username/newproject.git
+这种方式可以保留原版本库中的所有内容。
+
+ ////////////////////////////////////////
+https://www.cnblogs.com/stone1989/p/7000406.html
+server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none
+问题：
+server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none
+
+解决方法：
+在环境变量中加入
+
+export GIT_SSL_NO_VERIFY=1
+上面的不好用试试下面的：
+
+git config --global http.sslverify false
